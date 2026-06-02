@@ -1,3 +1,7 @@
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using SystemObserver.Application.Services; // ЭТОГО У ТЕБЯ НЕ ХВАТАЕТ
+
 namespace SystemObserver.Worker;
 
 public class Worker(MetricProcessor processor, ILogger<Worker> logger) : BackgroundService
