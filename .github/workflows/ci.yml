@@ -11,16 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 9.0.x
-          
+          dotnet-version: '9.0.x'
+
       - name: Restore dependencies
         run: dotnet restore src/SystemObserver.sln
-        
+
       - name: Build and Test
-      run: |
-        dotnet build SystemObserver.sln --configuration Release
-        dotnet test SystemObserver.sln --configuration Release --no-build
+        run: |
+          dotnet build src/SystemObserver.sln --configuration Release
+          dotnet test src/SystemObserver.sln --configuration Release --no-build
