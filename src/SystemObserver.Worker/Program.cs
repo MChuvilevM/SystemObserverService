@@ -1,6 +1,5 @@
-using SystemObserver.Worker;
+using Microsoft.Extensions.Hosting;
 
-IHost builder = Host.CreateApplicationBuilder(args);
-// В будущем здесь будет добавление сервисов
-IHost host = builder.Build();
+var builder = Host.CreateApplicationBuilder(args);
+using IHost host = builder.Build();
 host.Run();
