@@ -27,7 +27,7 @@ public class FileMetricRepository : IMetricRepository
                 File.Move(_filePath, $"{_filePath}.old", true);
             }
 
-            var logLine = $"{metric.Timestamp:yyyy-MM-dd HH:mm:ss} | {metric.MetricName}: {metric.Value}{Environment.NewLine}";
+            var logLine = $"{metric.Timestamp:yyyy-MM-dd HH:mm:ss} | {metric.Name}: {metric.Value}{Environment.NewLine}";
             await File.AppendAllTextAsync(_filePath, logLine, ct);
         }
         catch (IOException ex)
