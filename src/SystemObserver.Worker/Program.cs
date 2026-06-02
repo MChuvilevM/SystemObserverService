@@ -10,7 +10,7 @@ var builder = Host.CreateApplicationBuilder(args);
 builder.Services.Configure<MetricSettings>(
     builder.Configuration.GetSection("MetricSettings"));
 
-builder.Services.AddInfrastructure();
+builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddSingleton<MetricProcessor>();
 builder.Services.AddHostedService<Worker>(); // Теперь класс Worker найден
 
