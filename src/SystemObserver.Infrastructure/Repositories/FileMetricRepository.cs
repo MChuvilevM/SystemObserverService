@@ -1,4 +1,6 @@
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using SystemObserver.Application.Models;
 using SystemObserver.Domain.Interfaces;
 using SystemObserver.Domain.Models;
 
@@ -6,12 +8,13 @@ namespace SystemObserver.Infrastructure.Repositories;
 
 public class FileMetricRepository : IMetricRepository
 {
-    private readonly string _filePath = "metrics.log";
+    private readonly string _filePath;
     private const long MaxFileSize = 1 * 1024 * 1024;
     private readonly ILogger<FileMetricRepository> _logger;
 
-    public FileMetricRepository(ILogger<FileMetricRepository> logger)
+    public FileMetricRepository(IOptions<MetricSettings> settings, ILogger<FileMetricRepository> logger)
     {
+        _filePath = settings.Value.StoragePath;
         _logger = logger;
     }
 
