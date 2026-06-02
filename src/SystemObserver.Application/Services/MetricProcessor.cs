@@ -1,6 +1,4 @@
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using SystemObserver.Application.Models;
 using SystemObserver.Domain.Interfaces;
 using SystemObserver.Domain.Models;
 
@@ -8,7 +6,6 @@ namespace SystemObserver.Application.Services;
 
 public class MetricProcessor(
     IMetricRepository repository, 
-    IOptions<MetricSettings> settings,
     ILogger<MetricProcessor> logger)
 {
     public async Task ProcessAsync(SystemMetric metric, CancellationToken ct)
