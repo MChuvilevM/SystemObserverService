@@ -20,12 +20,7 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore src/SystemObserver.sln
         
-      - name: Build
-      run: dotnet build src/SystemObserver.sln --configuration Release
-
-    - name: Run tests
-      run: dotnet test tests/SystemObserver.Tests/SystemObserver.Tests.csproj --configuration Release --no-build
-        
-      - name: Test
-        run: dotnet test src/SystemObserver.sln --no-build --verbosity normal --configuration Release
-        
+      - name: Build and Test
+      run: |
+        dotnet build SystemObserver.sln --configuration Release
+        dotnet test SystemObserver.sln --configuration Release --no-build
