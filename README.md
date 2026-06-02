@@ -54,10 +54,11 @@ IntervalSeconds: Частота опроса системы (секунды).
 🚀 Запуск
 
 Сборка проекта: dotnet build
----
+
 Запуск сервиса: dotnet run --project src/SystemObserver.Worker
----
+
   Разработано с использованием .NET 9.0
----
+
+---  
   Автор: MChuvilevM
 ---
