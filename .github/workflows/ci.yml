@@ -21,7 +21,7 @@ jobs:
         run: dotnet restore src/SystemObserver.sln
         
       - name: Build
-        run: dotnet build src/SystemObserver.sln --no-restore --configuration Release
+        run: dotnet build src/SystemObserver.sln --configuration Release
         
       - name: Test
         run: dotnet test src/SystemObserver.sln --no-build --verbosity normal --configuration Release
