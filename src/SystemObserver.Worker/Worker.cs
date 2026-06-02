@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using SystemObserver.Application.Services; // ЭТОГО У ТЕБЯ НЕ ХВАТАЕТ
+using SystemObserver.Application.Services;
+using SystemObserver.Domain.Models;
 
 namespace SystemObserver.Worker;
 
@@ -12,7 +13,9 @@ public class Worker(MetricProcessor processor, ILogger<Worker> logger) : Backgro
         
         while (!stoppingToken.IsCancellationRequested)
         {
-            logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+            var metric = new SystemMetric("CPU", 25.5, DateTime.UtcNow);
+            await processor.ProcessAsync(metric, stoppingToken);
+            
             await Task.Delay(5000, stoppingToken);
         }
     }
